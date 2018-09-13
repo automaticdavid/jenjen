@@ -15,7 +15,7 @@ node {
                     my_var:  "Jenkins Test"'''
             )
 
-            echo VAR_NAME
+            echo env.VAR_NAME
             echo env.BUILD_NUMBER
             echo env.JOB_NAME
             def vvv = System.getenv('VAR_NAME')
@@ -36,8 +36,8 @@ node {
             def inj = readFile file
             echo inj
 
-            echo currentBuild.buildVariables
-
+            def myVar = build.getEnvironment(listener).get('VAR_NAME')
+            echo myVar
 
         } 
     }    
