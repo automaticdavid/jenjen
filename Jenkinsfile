@@ -22,7 +22,7 @@ node {
             // env.WORKSPACE = pwd()
             // def version = readFile "${env.WORKSPACE}/version.txt"
 
-            dev inj = readFile "/home/bitnami/apps/jenkins/jenkins_home/jobs/tower-multibranch/branches/jenjen/builds/8/injectedEnvVars.txt"
+            def inj = readFile "/home/bitnami/apps/jenkins/jenkins_home/jobs/tower-multibranch/branches/jenjen/builds/8/injectedEnvVars.txt"
             echo inj
         } 
     }    
