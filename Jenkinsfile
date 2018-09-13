@@ -3,7 +3,7 @@ node {
 
 
         
-            def toto = ansibleTower(
+            ansibleTower(
                 towerServer: 'tower-cluster01',
                 templateType: 'job',
                 jobTemplate: 'dcl-ec2-create',
@@ -15,9 +15,7 @@ node {
                     my_var:  "Jenkins Test"'''
             )
 
-
-            echo toto
-        
+            echo VAR_NAME
             echo env.BUILD_NUMBER
             echo env.JOB_NAME
             def vvv = System.getenv('VAR_NAME')
