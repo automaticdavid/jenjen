@@ -22,14 +22,15 @@ node {
             // env.WORKSPACE = pwd()
             // def version = readFile "${env.WORKSPACE}/version.txt"
 
-            def jh = env.JENKINS_HOME
-            def (jn, jb) = env.JOB_NAME.split('/')
+            def jenhome = env.JENKINS_HOME
+            def (jobname, jobbranch) = env.JOB_NAME.split('/')
+            def jobbuild = '8'
             
-            def file = jh + '/'  + jn + '/branch/' + jb  
+            def file = jenhome + '/jobs/'  + jobnname + '/branches/' + jobbbranch + '/builds/' + jobbuild + '/injectedEnvVars.txt'  
 
             echo file
 
-            //def inj = readFile "/home/bitnami/apps/jenkins/jenkins_home/jobs/tower-multibranch/branches/jenjen/builds/8/injectedEnvVars.txt"
-            //echo inj
+            def inj = readFile file
+            echo inj
         } 
     }    
