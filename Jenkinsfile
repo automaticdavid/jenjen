@@ -23,7 +23,13 @@ node {
             // def version = readFile "${env.WORKSPACE}/version.txt"
 
             def jh = env.JENKINS_HOME
+            def jn = env.JOB_NAME
             echo jh
+            echo jn
+
+            def file = jh + jn 
+
+            echo file
 
             //def inj = readFile "/home/bitnami/apps/jenkins/jenkins_home/jobs/tower-multibranch/branches/jenjen/builds/8/injectedEnvVars.txt"
             //echo inj
