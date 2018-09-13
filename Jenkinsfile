@@ -24,7 +24,7 @@ node {
 
             def jenhome = env.JENKINS_HOME
             def (jobname, jobbranch) = env.JOB_NAME.split('/')
-            def jobbuild = '8'
+            def jobbuild = env.BUILD_ID
             
             def file = jenhome + '/jobs/'  + jobname + '/branches/' + jobbranch + '/builds/' + jobbuild + '/injectedEnvVars.txt'  
 
