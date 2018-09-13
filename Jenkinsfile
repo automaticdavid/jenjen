@@ -18,9 +18,10 @@ node {
             def vvv = System.getenv('VAR_NAME')
             def ttt = binding.variables.get('VAR_NAME')
             echo sh(returnStdout: true, script: 'env')
-            echo vvv 
-            env.WORKSPACE = pwd()
-            def version = readFile "${env.WORKSPACE}/version.txt"
-            echo version
+            echo sh(returnStdout: true, script: 'vvv')
+            # env.WORKSPACE = pwd()
+            # def version = readFile "${env.WORKSPACE}/version.txt"
+            dev inj = readfile "/home/bitnami/apps/jenkins/jenkins_home/jobs/tower-multibranch/branches/jenjen/builds/8/injectedEnvVars.txt"
+            echo inj
         } 
     }    
