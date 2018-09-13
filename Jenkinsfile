@@ -35,7 +35,7 @@ node {
             def inj = readFile file
             echo inj
 
-            echo currentBuild
+            echo currentBuild.buildVariables
 
 
         } 
