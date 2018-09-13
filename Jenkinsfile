@@ -26,7 +26,7 @@ node {
             def (jobname, jobbranch) = env.JOB_NAME.split('/')
             def jobbuild = '8'
             
-            def file = jenhome + '/jobs/'  + jobname + '/branches/' + jobbbranch + '/builds/' + jobbuild + '/injectedEnvVars.txt'  
+            def file = jenhome + '/jobs/'  + jobname + '/branches/' + jobbranch + '/builds/' + jobbuild + '/injectedEnvVars.txt'  
 
             echo file
 
