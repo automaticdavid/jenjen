@@ -1,3 +1,7 @@
+
+import jenkins.model.*
+jenkins = Jenkins.instance
+
 node {
     stage('Tower') {
 
