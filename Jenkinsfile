@@ -17,8 +17,8 @@ node {
             echo env.JOB_NAME
             def vvv = System.getenv('VAR_NAME')
             def ttt = binding.variables.get('VAR_NAME')
-            echo env.vvv
-            echo $ttt
+            echo env
+            echo vvv
              
             env.WORKSPACE = pwd()
             def version = readFile "${env.WORKSPACE}/version.txt"
