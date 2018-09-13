@@ -1,5 +1,7 @@
 node {
     stage('Tower') {
+
+
         
             ansibleTower(
                 towerServer: 'tower-cluster01',
@@ -32,5 +34,9 @@ node {
 
             def inj = readFile file
             echo inj
+
+            echo currentBuild
+
+
         } 
     }    
