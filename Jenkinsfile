@@ -17,10 +17,10 @@ node {
             echo env.JOB_NAME
             def vvv = System.getenv('VAR_NAME')
             def ttt = binding.variables.get('VAR_NAME')
-            echo env
-            echo vvv
-             
+            echo sh(returnStdout: true, script: 'env')
+            echo vvv 
             env.WORKSPACE = pwd()
             def version = readFile "${env.WORKSPACE}/version.txt"
+            echo version
         } 
     }    
