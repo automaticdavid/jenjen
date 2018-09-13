@@ -23,11 +23,9 @@ node {
             // def version = readFile "${env.WORKSPACE}/version.txt"
 
             def jh = env.JENKINS_HOME
-            def jn = env.JOB_NAME
-            echo jh
-            echo jn
-
-            def file = jh + jn 
+            def (jn, jb) = env.JOB_NAME.split('/')
+            
+            def file = jh + '/'  + jn + '/branch/' + jb  
 
             echo file
 
