@@ -17,7 +17,7 @@ node {
             echo env.JOB_NAME
             def vvv = System.getenv('VAR_NAME')
             def ttt = binding.variables.get('VAR_NAME')
-            echo System.getProperties("vvv");
+            echo env.vvv
             echo $ttt
              
             env.WORKSPACE = pwd()
