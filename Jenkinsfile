@@ -24,6 +24,8 @@ node {
             inj.replaceFirst(/=/, "='")
             inj.replaceFirst(/$/, "'")
 
+            echo inj
+
 
             def config = new ConfigSlurper().parse(inj)
             echo config.VAR_NAME
