@@ -20,10 +20,9 @@ node {
             def (jn, jb) = env.JOB_NAME.split('/')
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
-            inj = readFile(file)
             
             towervars=[:]
-            inj.eachLine{ line ->
+            new File(file).eachLine { line ->
                 l=line.split("=",2)
                 k=l[0]
                 v=l[1]
