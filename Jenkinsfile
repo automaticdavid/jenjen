@@ -21,13 +21,13 @@ node {
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             def inj = readFile file
-            inj.replaceFirst(/=/, "='")
-            inj.replaceFirst(/$/, "'")
+            def inj2 = inj.replaceFirst(/=/, "='")
+            def inj3 = inj2.replaceFirst(/$/, "'")
 
-            echo inj
+            echo inj3
 
 
-            def config = new ConfigSlurper().parse(inj)
+            def config = new ConfigSlurper().parse(inj3)
             echo config.VAR_NAME
 
         } 
