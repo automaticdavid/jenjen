@@ -21,7 +21,6 @@ node {
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             def inj = readFile file
-            mphone.replaceFirst(/^1/, "")
             inj.replaceFirst(/=/, "='")
             inj.replaceFirst(/$/, "'")
 
