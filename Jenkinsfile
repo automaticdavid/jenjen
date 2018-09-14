@@ -22,15 +22,17 @@ node {
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             inj = readFile(file)
             
-            tower_vars=[:]
-            file.eachLine{ line ->
+            towervars=[:]
+            inj.eachLine{ line ->
                 l=line.split("=",2)
                 k=l[0]
                 v=l[1]
-                tower_vars[k]=v
+                towervars[k]=v
             }
 
-            echo tower_vars.VAR_NAME
+            echo towervars
+            echo towervars.VAR_NAME
+
 
         } 
     }    
