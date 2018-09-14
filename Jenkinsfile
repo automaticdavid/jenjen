@@ -20,15 +20,17 @@ node {
             def (jn, jb) = env.JOB_NAME.split('/')
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
-            def inj = readFile file
-            def inj2 = inj.replaceFirst(/=/, "='")
-            def inj3 = inj2.replaceFirst(/$/, "'")
+            inj = readFile(file)
+            
+            tower_vars=[:]
+            file.eachLine{ line ->
+                l=line.split("=",2)
+                k=l[0]
+                v=l[1]
+                tower_vars[k]=v
+            }
 
-            echo inj3
-
-
-            def config = new ConfigSlurper().parse(inj3)
-            echo config.VAR_NAME
+            echo tower_vars.VAR_NAME
 
         } 
     }    
@@ -52,3 +54,7 @@ node {
             // echo sh(returnStdout: true, script: 'env')
             
             // env.WORKSPACE = pwd()
+
+            // def inj = readFile file
+            // def inj2 = inj.replaceFirst(/=/, "='")
+            // def inj3 = inj2.replaceFirst(/$/, "'")
