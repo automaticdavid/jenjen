@@ -26,14 +26,10 @@ node {
                 l=line.split("=",2)
                 k=l[0]
                 v=l[1]
-                echo k
-                echo v
                 towervars[k]=v
             }
 
             echo towervars["VAR_NAME"]
-
-
 
         } 
     }    
