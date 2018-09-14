@@ -22,7 +22,7 @@ node {
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             
             towervars=[:]
-            new File(file).eachLine { line ->
+            readFile(file).split('\n').each { line ->
                 l=line.split("=",2)
                 k=l[0]
                 v=l[1]
@@ -38,6 +38,7 @@ node {
         } 
     }    
 
+            // readFile("input.csv").split('\n').each { line -> ... }
 
             // def varMap = [:]
             // def binding = new Binding(varMap)
