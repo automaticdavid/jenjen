@@ -21,7 +21,7 @@ node {
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
 
-            def config = new ConfigSlurper().parse(new File(file).toURL())
+            def config = new ConfigSlurper().parse(new File(file).toURL()).toProperties()
             echo config.VAR_NAME
 
         } 
