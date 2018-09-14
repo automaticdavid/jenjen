@@ -20,8 +20,13 @@ node {
             def (jn, jb) = env.JOB_NAME.split('/')
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
+            def inj = readFile file
+            mphone.replaceFirst(/^1/, "")
+            inj.replaceFirst(/=/, "='")
+            inj.replaceFirst(/$/, "'")
 
-            def config = new ConfigSlurper().parse(new File(file).toURL()).toProperties()
+
+            def config = new ConfigSlurper().parse(inj)
             echo config.VAR_NAME
 
         } 
