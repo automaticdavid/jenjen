@@ -16,6 +16,28 @@ node {
                     my_var:  "Jenkins Test"'''
             )
 
+            def jh = env.JENKINS_HOME
+            def (jn, jb) = env.JOB_NAME.split('/')
+            def ji = env.BUILD_ID
+            def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
+
+            def config = new ConfigSlurper().parse(new File(file).toURL())
+            echo config.VAR_NAME
+
+        } 
+    }    
+
+
+            // def varMap = [:]
+            // def binding = new Binding(varMap)
+            // def shell = new GroovyShell(binding)
+            // shell.(inj)
+            // echo varMap
+
+            // def inj = readFile file
+            // echo inj
+
+
             // echo env.VAR_NAME
             // echo env.BUILD_NUMBER
             // echo env.JOB_NAME
@@ -24,31 +46,3 @@ node {
             // echo sh(returnStdout: true, script: 'env')
             
             // env.WORKSPACE = pwd()
-            // def version = readFile "${env.WORKSPACE}/version.txt"
-
-            def jh = env.JENKINS_HOME
-            def (jn, jb) = env.JOB_NAME.split('/')
-            def ji = env.BUILD_ID
-            
-            def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
-            
-            // def inj = readFile file
-            // echo inj
-
-            def config = new ConfigSlurper().parse(new File('file').toURL())
-
-            echo config.VAR_NAME
-
-            // def varMap = [:]
-            // def binding = new Binding(varMap)
-            // def shell = new GroovyShell(binding)
-            // shell.(inj)
-            // echo varMap
-
- 
-
-            // def inj = readFile file
-            // echo inj
-
-        } 
-    }    
