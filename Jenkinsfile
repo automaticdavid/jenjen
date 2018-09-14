@@ -34,7 +34,9 @@ node {
 
             echo towervars["VAR_NAME"]
 
-    }    
+        }
+
+    }        
 
             // readFile("input.csv").split('\n').each { line -> ... }
 
