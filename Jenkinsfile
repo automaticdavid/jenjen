@@ -1,9 +1,10 @@
 
 node {
+
+    towervars=[:]
+
     stage('Tower') {
-
-
-        
+  
             ansibleTower(
                 towerServer: 'tower-cluster01',
                 templateType: 'job',
@@ -21,17 +22,18 @@ node {
             def ji = env.BUILD_ID
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             
-            towervars=[:]
             readFile(file).split('\n').each { line ->
                 l=line.split("=",2)
                 k=l[0]
                 v=l[1]
                 towervars[k]=v
             }
+        }
+
+    stage('Display') { 
 
             echo towervars["VAR_NAME"]
 
-        } 
     }    
 
             // readFile("input.csv").split('\n').each { line -> ... }
