@@ -31,8 +31,11 @@ node {
             def ji = env.BUILD_ID
             
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
-            tower_env = load file
+            
+            def inj = readFile file
+            echo inj
 
+            tower_env = load file
             echo tower_env.VAR_NAME
 
             // def inj = readFile file
