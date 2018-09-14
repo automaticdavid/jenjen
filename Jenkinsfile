@@ -33,13 +33,17 @@ node {
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             
             def inj = readFile file
-            echo inj
+            // echo inj
 
-            def varMap = [:]
-            def binding = new Binding(varMap)
-            def shell = new GroovyShell(binding)
-            shell.evaluate(inj)
-            echo varMap
+            def config = new ConfigSlurper().parse(new File('p.envs').toURL())
+
+            echo config.VAR_NAME
+
+            // def varMap = [:]
+            // def binding = new Binding(varMap)
+            // def shell = new GroovyShell(binding)
+            // shell.(inj)
+            // echo varMap
 
  
 
