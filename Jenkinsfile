@@ -35,8 +35,13 @@ node {
             def inj = readFile file
             echo inj
 
-            tower_env = load file
-            echo tower_env.VAR_NAME
+            def varMap = [:]
+            def binding = new Binding(varMap)
+            def shell = new GroovyShell(binding)
+            shell.evaluate(inj)
+            echo varMap
+
+ 
 
             // def inj = readFile file
             // echo inj
