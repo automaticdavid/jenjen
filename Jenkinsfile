@@ -1,7 +1,4 @@
 
-import jenkins.model.*
-jenkins = Jenkins.instance
-
 node {
     stage('Tower') {
 
@@ -19,29 +16,27 @@ node {
                     my_var:  "Jenkins Test"'''
             )
 
-            echo env.VAR_NAME
-            echo env.BUILD_NUMBER
-            echo env.JOB_NAME
-            def vvv = System.getenv('VAR_NAME')
-            def ttt = binding.variables.get('VAR_NAME')
-            echo sh(returnStdout: true, script: 'env')
+            // echo env.VAR_NAME
+            // echo env.BUILD_NUMBER
+            // echo env.JOB_NAME
+            // def vvv = System.getenv('VAR_NAME')
+            // def ttt = binding.variables.get('VAR_NAME')
+            // echo sh(returnStdout: true, script: 'env')
             
             // env.WORKSPACE = pwd()
             // def version = readFile "${env.WORKSPACE}/version.txt"
 
-            def jenhome = env.JENKINS_HOME
-            def (jobname, jobbranch) = env.JOB_NAME.split('/')
-            def jobbuild = env.BUILD_ID
+            def jh = env.JENKINS_HOME
+            def (jn, jb) = env.JOB_NAME.split('/')
+            def ji = env.BUILD_ID
             
-            def file = jenhome + '/jobs/'  + jobname + '/branches/' + jobbranch + '/builds/' + jobbuild + '/injectedEnvVars.txt'  
+            def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
+            tower_env = load file
 
-            echo file
+            echo tower_env.VAR_NAME
 
-            def inj = readFile file
-            echo inj
-
-            def myVar = build.getEnvironment(listener).get('VAR_NAME')
-            echo myVar
+            // def inj = readFile file
+            // echo inj
 
         } 
     }    
