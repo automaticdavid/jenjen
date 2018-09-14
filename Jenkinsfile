@@ -32,10 +32,10 @@ node {
             
             def file = jh + '/jobs/' + jn + '/branches/' + jb + '/builds/' + ji + '/injectedEnvVars.txt'  
             
-            def inj = readFile file
+            // def inj = readFile file
             // echo inj
 
-            def config = new ConfigSlurper().parse(new File('p.envs').toURL())
+            def config = new ConfigSlurper().parse(new File('file').toURL())
 
             echo config.VAR_NAME
 
