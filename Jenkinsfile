@@ -30,8 +30,8 @@ node {
                 towervars[k]=v
             }
 
-            echo towervars
-            echo towervars.VAR_NAME
+            withEnv(['VAR_NAME='+towervars["VAR_NAME"])
+
 
 
         } 
